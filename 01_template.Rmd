@@ -8,7 +8,9 @@ output:
     toc_float: yes
 ---
 
-This is an [R Notebook](https://rmarkdown.rstudio.com/r_notebooks.html) illustrating [literate programming](https://en.wikipedia.org/wiki/Literate_programming) techniques with R code **inside** *code chunks* and incorporating explanations (enhanced via [R Markdown](http://rmarkdown.rstudio.com/)) **outside** the *code chunks*. You can execute code within the R Notebook. Results appear beneath the code will also be integrated into the output documents identified in the [YAML](https://en.wikipedia.org/wiki/YAML) header .
+This is an [R Notebook](https://rmarkdown.rstudio.com/r_notebooks.html) illustrating [literate programming](https://en.wikipedia.org/wiki/Literate_programming) techniques with code **inside** *code chunks*.  Outside the code chunks is prose enhances with simple [R Markdown](http://rmarkdown.rstudio.com/)). 
+
+You can execute code within the R Notebook. Results appear beneath the code.  R Markdown documents can be rendered into many formats including MS Word, Power Point, slides, web pages, web sites, and more. 
 
 Try executing the code chunk, below, by clicking the green-arrow *Run* button (within the chunk), or by placing your cursor inside the chunk and pressing *Ctrl+Shift+Enter.*
 
@@ -98,8 +100,10 @@ starwars
 ## Filter
 
 ```{r}
+#starwars_small <- starwars %>% 
+#  filter(!is.na(mass), !is.na(height))
 starwars_small <- starwars %>% 
-  filter(!is.na(mass), !is.na(height))
+  filter(mass >= 0)
 ```
 
 ## Arrange
@@ -156,7 +160,7 @@ starwars %>%
   filter(!is.na(height)) %>% 
   group_by(species) %>% 
   summarise(Count = n(), mean_ht = mean(height), min_ht = min(height),
-            max_ht = max(height)) %>% 
+            max_ht = max(height), sum_ht = sum(height)) %>% 
   arrange(desc(Count))
 ```
 
