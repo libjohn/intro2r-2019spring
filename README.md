@@ -64,17 +64,15 @@ Outline
 
     1.  `left_join` to merge data
 
-12. More Visualize with `ggvis` (syntactically simpler than ggplot2, but...)
+12. More Visualize with `ggplot2`
 
     1.  Basic visualization (Scatter Plot, Box Plot, Histogram, Bar Chart)
     2.  Take the ggplot2 workshop, or see the [materials](https://github.com/data-and-visualization/ggplot2-S18)
-    3.  Resource: <https://rfun.library.duke.edu/intro2r/visualization.html>
+    3.  Resource: <https://rfun.library.duke.edu/portfolio/ggplot_workshop/>
 
 13. Our Training Materials
 
     1.  R we having fun yet‽ <https://rfun.library.duke.edu>. Training materials for R.
-
-        -   [2018 Workshops](http://rfun.library.duke.edu/2017/11/30/tidyverse-workshops-coming-in-january/): Intro to 2 / Visualization / Shiny / Mapping / Git / R Markdown
 
     2.  Full DVS [workshop series](https://library.duke.edu/data/news/past-workshops)
 
