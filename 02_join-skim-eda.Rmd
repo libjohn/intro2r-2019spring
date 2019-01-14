@@ -2,7 +2,7 @@
 title: "EDA (Skim), Join, Visualize"
 author: "John Little"
 date: "`r Sys.Date()`"
-abstract: "This document is a tidyverse/dplyr tour using R/RStudio.  The instructor will demonstrate how to undertake an initial investigation into two datasets.  More information can be found at this repo: https://github.com/data-and-visualization/intro2r-2018-datafest. Our Intro to R workshop can be found at https://rfun.library.duke.edu/intro2r/.  This document is covered by the CC BY-NC license:  https://creativecommons.org/licenses/by-nc/4.0/legalcode.\n"
+abstract: "This document is a tidyverse/dplyr tour using R/RStudio.  The instructor will demonstrate how to undertake an initial investigation into two datasets.  More information about our Intro to R workshop can be found at https://rfun.library.duke.edu/intro2r/.  This document is covered by the CC BY-NC license:  https://creativecommons.org/licenses/by-nc/4.0/legalcode.\n"
 output:  
   html_notebook:
     toc: true
@@ -13,7 +13,6 @@ output:
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(skimr)
-library(ggvis)
 ```
 
 # Load Data
@@ -40,9 +39,9 @@ favorability_popularity_rating <-
 # This chunk loaded the data from fivethirtyeight.com iniially but we are simplifying 
 # the data load for ease for instruction.
 #
-sw_characters_favorability <- read_csv(
-  "https://raw.githubusercontent.com/fivethirtyeight/data/master/star-wars-survey/StarWars.csv", 
-  skip = 1)[,16:29]   # Skip first line due to funky column headers.  [,16:29] ingests columns 16 through 29.
+#sw_characters_favorability <- read_csv(
+#  "https://raw.githubusercontent.com/fivethirtyeight/data/master/star-wars-survey/StarWars.csv", 
+#  skip = 1)[,16:29]   # Skip first line due to funky column headers.  [,16:29] ingests columns 16 through 29.
 ```
 
 
@@ -63,11 +62,11 @@ starwars
 #
 # IGNORE THIS code chunk
 #
-favorability_popularity_rating <- sw_characters_favorability %>% 
-  map_dfr(fct_count) %>% 
-  filter(f == "Very favorably") %>% 
-  add_column(name = colnames(sw_characters_favorability)) %>% 
-  select(name, fav_rating = n)
+#favorability_popularity_rating <- sw_characters_favorability %>% 
+#  map_dfr(fct_count) %>% 
+#  filter(f == "Very favorably") %>% 
+#  add_column(name = colnames(sw_characters_favorability)) %>% 
+#  select(name, fav_rating = n)
 ```
 
 I have transformed the *Five Thirty Eight* [data](https://github.com/fivethirtyeight/data/tree/master/star-wars-survey).  It's ready to merge with the other dataset.
@@ -120,70 +119,85 @@ sw_joined %>%
 
 # Visualize
 
+Basic ggplot2 template 
+
+```r
+ggplot(data = starwars, aes(x = height, y = fav_rating)) +
+  geom_----()
+
+```
+
+
+
 ## Scatter Plot
 
 Is a character's favorability dependent on their individual height?
 
-```{r scatterplot-fav_rating}
+```{r}
 sw_joined %>% 
   drop_na(fav_rating) %>% 
-  ggvis(~height, ~fav_rating) %>% 
-  layer_points()
+  ggplot(aes(x = height, y = fav_rating)) +
+  geom_point()
 ```
+
 
 
 ## Box Plot
 
 What is the distribution of the mass of three species:  Human, Droid, Mirialan?
 
-```{r species-boxplot}
+```{r}
 starwars %>% 
   drop_na(species, mass) %>% 
   filter(species == "Human" |
            species == "Droid" |
            species == "Mirialan") %>% 
-  ggvis(~species, ~mass) %>% 
-  layer_boxplots()
+  ggplot(aes(x = species, y = mass)) +
+  geom_boxplot()
 ```
+
 
 ## Histogram
 
 What is the distribution of the birth years of all the characters?
 
-```{r birth-year_histogram}
+```{r}
 starwars %>% 
-  ggvis(~birth_year) %>% 
-  layer_histograms()
+  ggplot(aes(x = birth_year)) +
+  geom_histogram()
 ```
+
 
 What is the distribution of the character's height?
 
-```{r height_histogram}
+```{r}
 starwars %>% 
-  ggvis(~height) %>% 
-  layer_histograms()
+  ggplot(aes(x = height)) +
+  geom_histogram()
 ```
+
 
 ## Bar Plot
 
-```{r eye-color_barplot}
-order_eye <- as_vector(fct_count(starwars$eye_color, sort = TRUE) %>% select(f))
-
-starwars %>%   
-  ggvis(~eye_color) %>% 
-  layer_bars() %>% 
-  scale_ordinal("x", domain = order_eye)
+```{r}
+ggplot(data = starwars) +
+  geom_bar(aes(fct_infreq(eye_color)))
 ```
 
-```{r refine_barplot}
-fct_count(starwars$eye_color, sort = TRUE) %>% 
-  head() %>% 
-  ggvis(~f, ~n) %>% 
-  layer_bars(fill := ~f, stroke := ~f) %>% 
-  add_axis("x", title = "Eye Color") %>% 
-  add_axis("y", title = "Frequency") %>% 
-  scale_ordinal('x', domain=c("brown", "blue", "yellow", "black", "orange", "red")) 
+```{r}
+ggplot(starwars) +
+  geom_bar(aes(fct_rev(fct_lump(fct_infreq(eye_color), n = 6))), 
+           fill = "grey") + 
+  coord_flip() +
+  geom_bar(data = starwars %>% filter(eye_color == "orange"),
+           aes(eye_color), fill = "orange") +
+  labs(x = "Eye Color", y = "",
+       title = "Eye Color of Starwars Characters",
+       subtitle = "Oranges eyes are uncommon.",
+       caption = "Data Source: dplyr::starwars")
+
 ```
+
 
 
 # Session Info
@@ -191,7 +205,7 @@ fct_count(starwars$eye_color, sort = TRUE) %>%
 For reproducibility, it's always good to document the session info.
 
 ```{r session_info}
-devtools::session_info()
+sessioninfo::session_info()
 ```
 
 # License
