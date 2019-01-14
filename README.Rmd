@@ -6,8 +6,6 @@ output: github_document
 ---
 <!-- Edit the README.Rmd.  Readme.md is auto genererated --> 
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/libjohn/intro2r-2018fall.git/master?urlpath=rstudio)
-
 README
 ======
 
