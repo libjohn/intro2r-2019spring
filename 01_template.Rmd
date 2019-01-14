@@ -1,0 +1,166 @@
+---
+title: "my first notebook"
+author: "‽"
+date: "today's date"
+output:
+  html_notebook:
+    toc: yes
+    toc_float: yes
+---
+
+This is an [R Notebook](https://rmarkdown.rstudio.com/r_notebooks.html) illustrating [literate programming](https://en.wikipedia.org/wiki/Literate_programming) techniques with R code **inside** *code chunks* and incorporating explanations (enhanced via [R Markdown](http://rmarkdown.rstudio.com/)) **outside** the *code chunks*. You can execute code within the R Notebook. Results appear beneath the code will also be integrated into the output documents identified in the [YAML](https://en.wikipedia.org/wiki/YAML) header .
+
+Try executing the code chunk, below, by clicking the green-arrow *Run* button (within the chunk), or by placing your cursor inside the chunk and pressing *Ctrl+Shift+Enter.*
+
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+*Ctrl+Shift+M*:  Generates a pipe -- ` %>% ` -- between functions (When you use the `tidyerse` package.)
+
+###### https://rmarkdown.rstudio.com/r_notebooks.html
+
+# Packages and the Tidyverse
+
+###### https://tidyverse.org
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+
+
+# Hello World
+
+This is my very first R Notebook.  
+
+My^[Your Name Here ;-j] *favorite **search** engines* are 
+
+1. [Google](http://google.com)
+3. [Yahoo](http://yahoo.com)
+2. [Bing](http://bing.com)
+
+###### https://rmarkdown.rstudio.com/
+
+# Load Data
+
+###### https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio
+###### https://www.rstudio.com/resources/webinars/importing-data-into-r/
+
+### Hurricane data from github
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+canes <- read_csv("https://is.gd/bigstorms")
+```
+
+```{r echo=FALSE}
+canes
+```
+
+have a look at the data structures and data types
+
+###### http://r4ds.had.co.nz/tibbles.html
+
+```{r}
+class(canes)
+```
+
+###### http://r4ds.had.co.nz/vectors.html
+
+```{r}
+glimpse(canes)
+```
+
+
+# dplyr
+
+- filter  (rows)
+- arrange (sort rows by variables)
+- select (columns)
+- mutate (change cell values)
+- Count
+- Summarize
+
+###### http://r4ds.had.co.nz/transform.html#introduction-2
+###### http://dplyr.tidyverse.org/
+
+```{r}
+starwars
+```
+
+## Filter
+
+```{r}
+starwars_small <- starwars %>% 
+  filter(!is.na(mass), !is.na(height))
+```
+
+## Arrange
+
+```{r}
+starwars_small %>% 
+  arrange(desc(height), desc(name))
+```
+
+## Select
+
+```{r}
+starwars_small %>% 
+  arrange(species, height) %>% 
+  select(name, species, height, mass, birth_year)
+```
+
+
+```{r}
+starwars_small %>% 
+  select(name, species, height, mass, birth_year) %>% 
+  arrange(species, desc(height), mass, name) %>% 
+  filter(species == "Human") 
+  
+```
+
+
+
+## Mutate
+
+```{r}
+starwars_small %>% 
+  select(name, species, height, mass, birth_year) %>% 
+  arrange(species, desc(height), mass, name) %>% 
+  filter(species == "Human") %>% 
+  mutate(BMI = round(height / mass, 2))
+```
+
+
+## Count
+
+```{r}
+starwars %>% 
+  count(mass) %>% 
+  drop_na() %>% 
+  arrange(desc(n))
+```
+
+
+## Summarize
+
+```{r}
+starwars %>% 
+  filter(!is.na(height)) %>% 
+  group_by(species) %>% 
+  summarise(Count = n(), mean_ht = mean(height), min_ht = min(height),
+            max_ht = max(height)) %>% 
+  arrange(desc(Count))
+```
+
+
+# More information
+
+https://rfun.library.duke.edu/intro2r

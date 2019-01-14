@@ -1,0 +1,114 @@
+---
+title: "Answers"
+date: "`r Sys.Date()`"
+---
+
+## PART ONE: Loading Data & Data Wrangling
+
+All of the following questions are based on the sample of restaurants represented in the dataset which is accurate as of September 2, 2016.
+
+# Load Packages
+```{r}
+library(tidyverse)
+```
+
+# Load Data
+
+```{r}
+brodhead <- read_csv("data/brodheadCenter.csv")
+```
+
+# Exercises: Data Wrangling
+
+1. Which restaurant has the lowest cost item and what is the item?
+
+```{r}
+brodhead %>% 
+  arrange(cost) %>% 
+  select(name, type, itemName, cost)
+```
+
+
+2. Which restaurant has the most expensive item(s)?  What are those item(s)?
+
+```{r}
+brodhead %>% 
+  arrange(desc(cost)) %>% 
+  select(name, type, itemName, cost)
+```
+
+##### Alternative Answer
+
+```{r include=FALSE}
+answer <- brodhead %>% 
+  arrange(desc(cost)) %>% 
+  filter(type == "restaurant") %>% 
+  select(name, type, itemName, cost) %>% 
+  head(1) 
+
+answer2 <- brodhead %>% 
+  select(name, type, itemName, cost) %>% 
+  filter(type == "restaurant",
+         cost == max(cost)) 
+```
+
+
+The **`r answer$name`** *`r answer$type`* has the most expensive item(s) at $`r answer$cost`.  Those item(s) are `r answer$itemName`.
+
+The **`r answer2$name[1]`** *`r answer2$type[1]`* has the most expensive item(s) @ $`r answer2$cost[1]`.  Those item(s) are `r answer2$itemName`.
+
+3. At the Brodhead Center, how many of the entrees (found in the `menuType` variable) cost eight dollars?
+
+```{r}
+brodhead %>% 
+  filter(cost == 8, menuType == "entree") %>% 
+  select(name, menuType, itemName, cost)
+```
+
+
+4. The head of Duke dining is considering reducing prices at the Brodhead Center. Using what we've learned in class, write a line of code that will calculate a new variable (`halfPrice`) that contains items at half price.
+
+```{r}
+brodhead %>% 
+  mutate(halfPrice = cost / 2) %>% 
+  select(name, itemName, cost, halfPrice)
+```
+
+
+5. How many entrees are in the dataset (`menuType` variable)? How many desserts 
+```{r}
+brodhead %>% 
+  count(menuType)
+```
+
+
+# PART TWO:  Data Structures & Vector Types
+
+Use the Brodhead Center prebuilt a dataset that has information about menus from three restaurants in Duke's dining hall.  
+
+You should have created a new R Notebook, and each notebook should be self contained.  This means you should load the packages and data again, even though you did that in the previous exercise.
+
+1. Using what we've you've seen in class, if `brodheadCenter.csv` is a csv file, how would you load the file into a new object called `brodhead`?
+
+```{r}
+library(tidyverse)
+brodhead <- read_csv("data/brodheadCenter.csv")
+# or 
+# brodhead <- read_csv("https://raw.githubusercontent.com/data-and-visualization/Intro2R/master/data/brodheadCenter.csv")
+```
+
+2. What data structure is `brodhead`?
+
+```{r}
+class(brodhead)
+```
+
+
+3. Take a look at the structure of the `brodhead` object.
+    - How many observations (rows) are there?
+    - How many variables (columns) are there?
+    - How many of the variables are numeric data?
+    
+```{r}
+glimpse(brodhead)
+```
