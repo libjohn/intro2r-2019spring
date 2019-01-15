@@ -11,16 +11,16 @@ README
 
 - Code
 
-    - https://is.gd/2018r1
-    - https://is.gd/2018r2
+    - https://is.gd/2019r1
+    - https://is.gd/2019r2
     
 - Repo -- Intro2R repo 
 
-    - https://is.gd/intro2r_2018fall
+    - https://is.gd/intro2r_2019spring
 
-This repository contains supporting datasets and files for our [*Intro to R*](https://rfun.library.duke.edu/intro2r/) workshop by the [Data & Visualization Services Department](http://library.duke.edu/data), Duke University Libraries. You can find more information about our future and past [workshops](http://library.duke.edu/data/news)
+This repository contains supporting datasets and files for our [*Intro to R*](https://intro2r.library.duke.edu/) workshop by the [Data & Visualization Services Department](http://library.duke.edu/data), Duke University Libraries. You can find more information about our future and past [workshops](http://library.duke.edu/data/news)
 
--   our *guide* can be found at our [Rfun site](https://rfun.library.duke.edu/intro2r/)
+-   Our *guide* can be found at our [Rfun site](https://intro2r.library.duke.edu/)
 
 - More on R [(then, scroll down to "R Learning Resources".) Includes video captures](https://library.duke.edu/data/guides)
 
