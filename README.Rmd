@@ -28,6 +28,9 @@ Outline
 -------
 
 1. Download the zipped repository ![Download ZIP button](images/clone.png "Download ZIP button")
+
+    - If using [RStudio.cloud](https://rstudio.cloud/) or the [Duke Docker instance](https://vm-manage.oit.duke.edu/containers/rstudio), use the `upload` button witin the **Files** tab to uplaod the zipped folder (which is the functional equivalent of the next two steps.)
+    
 1. Unzip/expand the zipped repo as a folder **in your Documents Directory**
 1. Launch RStudio
 1. File > New Project...

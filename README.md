@@ -1,7 +1,7 @@
 Intro to R, 2019 Spring
 ================
 John Little
-2019-01-15
+2019-01-16
 
 <!-- Edit the README.Rmd.  Readme.md is auto genererated -->
 README
@@ -26,6 +26,9 @@ Outline
 -------
 
 1.  Download the zipped repository ![Download ZIP button](images/clone.png "Download ZIP button")
+
+    -   If using [RStudio.cloud](https://rstudio.cloud/) or the [Duke Docker instance](https://vm-manage.oit.duke.edu/containers/rstudio), use the `upload` button witin the **Files** tab to uplaod the zipped folder (which is the functional equivalent of the next two steps.)
+
 2.  Unzip/expand the zipped repo as a folder **in your Documents Directory**
 3.  Launch RStudio
 4.  File &gt; New Project...

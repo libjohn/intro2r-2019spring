@@ -2,10 +2,7 @@
 title: "my first notebook"
 author: "‽"
 date: "today's date"
-output:
-  html_notebook:
-    toc: yes
-    toc_float: yes
+output: html_notebook
 ---
 
 This is an [R Notebook](https://rmarkdown.rstudio.com/r_notebooks.html) illustrating [literate programming](https://en.wikipedia.org/wiki/Literate_programming) techniques with code **inside** *code chunks*.  Outside the code chunks is prose enhances with simple [R Markdown](http://rmarkdown.rstudio.com/)). 

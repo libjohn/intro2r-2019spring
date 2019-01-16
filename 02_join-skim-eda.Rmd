@@ -142,21 +142,6 @@ sw_joined %>%
 
 
 
-## Box Plot
-
-What is the distribution of the mass of three species:  Human, Droid, Mirialan?
-
-```{r}
-starwars %>% 
-  drop_na(species, mass) %>% 
-  filter(species == "Human" |
-           species == "Droid" |
-           species == "Mirialan") %>% 
-  ggplot(aes(x = species, y = mass)) +
-  geom_boxplot()
-```
-
-
 ## Histogram
 
 What is the distribution of the birth years of all the characters?
@@ -174,6 +159,20 @@ What is the distribution of the character's height?
 starwars %>% 
   ggplot(aes(x = height)) +
   geom_histogram()
+```
+
+## Box Plot
+
+What is the distribution of the mass of three species:  Human, Droid, Gungan?
+
+```{r}
+starwars %>% 
+  drop_na(species, mass) %>% 
+  filter(species == "Human" |
+           species == "Droid" |
+           species == "Gungan") %>% 
+  ggplot(aes(x = species, y = mass)) +
+  geom_boxplot()
 ```
 
 
