@@ -30,7 +30,7 @@ The preview shows you a rendered HTML copy of the contents of the editor. Conseq
 
 ###### https://tidyverse.org
 
-```{r message=FALSE, warning=FALSE}
+```{r}
 library(tidyverse)
 ```
 
@@ -55,11 +55,11 @@ My^[Your Name Here ;-j] *favorite **search** engines* are
 
 ### Hurricane data from github
 
-```{r message=FALSE, warning=FALSE, include=FALSE}
+```{r}
 canes <- read_csv("https://is.gd/bigstorms")
 ```
 
-```{r echo=FALSE}
+```{r}
 canes
 ```
 
