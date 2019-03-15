@@ -10,6 +10,8 @@ rsconnect
 
 # Session Data files
 .RData
+data/*.zip
+data/2008.csv
 
 # Example code in package build process
 *-Ex.R
