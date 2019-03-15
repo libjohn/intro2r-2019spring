@@ -5,7 +5,7 @@ date:  "`r Sys.Date()`"
 output: html_notebook
 ---
 
-Data importing can be a time sink and a major bottleneck.  If your data are large, you'll want to import the data in the most efficient manner.  The table below give some guides lines for import depending on the size of your data
+Data importing can be a time sink and a major bottleneck.  If your data are large, you'll want to import the data in the most efficient manner.  The table below give some guides lines for import, depending on the size of your data.
 
 Data Size | Library Package
 --- | ---
@@ -14,9 +14,9 @@ Data Size | Library Package
 3GB > | Import data from a database tool using [dbplyr](https://dbplyr.tidyverse.org/)
 
 
-# Data
+# Practice Data
 
-660 MB file:  [2008.csv](https://gitlab.oit.duke.edu/john/tutotial-big-data-large-data/blob/master/data/2008.csv)
+2008.csv is a 660 MB file compressed to 176 MB:  [source](https://people.duke.edu/~jrl/bigdata/2008.zip).
 
 ## Package Libraries
 
@@ -35,7 +35,7 @@ library(data.table)
 
 ### read_csv
 
-A standard import with `read_csv` for a 600 MB file such as 2008.csv will take a long time to load.  You can see example code below.  The code is not executed becuase of the time delay.
+A standard import with `read_csv` for a 600 MB file will take a long time to load.  You can see example code below.  The code is not executed because of the time delay.
 
 ```r
 air <- read_csv("data/2008.csv")
@@ -48,6 +48,10 @@ Loading larger datasets is much faster with data.table::`fread()`
 The [data.table package](https://github.com/Rdatatable/data.table/wiki) is useful for importing data larger than 1-2 GB.  It's often a good idea to convert the imported data frame to a tibble using code such as the following:  `my_tibble <- as_tibble(my_imported_data.table)`
 
 ```{r}
+download.file("https://people.duke.edu/~jrl/bigdata/2008.zip", "data/2008.zip")
+
+unzip("data/2008.zip", exdir = "data")
+
 flights <- 
   fread("data/2008.csv", showProgress = FALSE)
 
@@ -70,7 +74,7 @@ data.table::`fread("data/2008.csv")` | 6.78 | 0.69 | 2.72
 
 An alternative to saving your data is to store the data in a binary matrix.  It may be convenient to preserve the data table as an **.Rdata** file.
 
-However, this does not load faster than `fread()`.  Below is an example with the non-executed code below.
+However, this is often much slower than import via `fread()`.  Below is non-executed code example for saving an `.Rdata` matrix.
 
 ```r
 save(flights, file="data/flights.Rdata")
@@ -79,7 +83,7 @@ system.time(load(file="data/flights.Rdata"))
 
 ## Sampling the data
 
-The following sections show methods of sampling the data so that you can work with representative subsets of data.  Using dplyr::`sample_frac()` can be an effective way to decrease your elapsed invesitgation times by decreasing computational processing.  `sample_frac` makes it easier to select random rows from a table.
+The following sections show methods of sampling the data so that you can work with representative subsets of data.  Using dplyr::`sample_frac()` can be an effective way to decrease your elapsed investigation times by decreasing computational processing.  `sample_frac` makes it easier to select random rows from a table.
 
 use dplyr::`sample_frac()`
 
@@ -134,7 +138,7 @@ system.time(rnorm(1e4) %*% t(rnorm(1e4)))
 
 # Benchmark
 
-The [`microbenchmark` package](https://cran.r-project.org/web/packages/microbenchmark/) can help you estimate how long your processes will take after working with the sample subset.  Another benchmarking alternative is the `rbenchmark` package.
+The [`microbenchmark` package](https://cran.r-project.org/web/packages/microbenchmark/) can help you estimate how long your processes will take after working with the sample subset.  Another bench marking alternative is the `rbenchmark` package.
 
 
 ```{r}
@@ -172,7 +176,6 @@ profvis({
 png("time_vs_dist.png", width=1024, height=800)
 ggplot(flights_small, aes(y=AirTime,x=Distance)) +
   geom_point(alpha=0.01, size=0.5)
-#dev.off()
 
 ggsave("time_vs_dist_ggsave.png")
 ```
@@ -182,6 +185,8 @@ ggsave("time_vs_dist_ggsave.png")
 
 
 ## Footnote
+
+The data and techniques were gathered from a 2018 DataFest workshop by Michael Akenda.
 
 - [michael akande](https://github.com/akandelanre)
 - http://www.stat.duke.edu/~oma9/datafest/df2018
