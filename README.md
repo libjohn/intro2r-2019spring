@@ -1,7 +1,7 @@
 Intro to R, 2019 Spring
 ================
-John Little
-2019-01-16
+John Little & Joel Herndon
+2019-03-18
 
 <!-- Edit the README.Rmd.  Readme.md is auto genererated -->
 README
@@ -9,8 +9,11 @@ README
 
 -   Code
 
-    -   <https://is.gd/2019r1>
-    -   <https://is.gd/2019r2>
+    -   Part 1: [dplyr](01_dplyr.Rmd) -- data transformations
+    -   Part 2: [ETD/Join](02_join-skim-eda.Rmd) -- exploratory data transformations & skimr
+    -   Part 3: [**Brief** introduction to ggplot2](https://intro2r.library.duke.edu/visualization.html)
+    -   Part 4: [Importing Large Files](large_data.Rmd)
+    -   Part 5: [**Brief** GIS/Mapping](https://intro2r.library.duke.edu/gis.html)
 
 -   Repo -- Intro2R repo
 
@@ -22,8 +25,8 @@ This repository contains supporting datasets and files for our [*Intro to R*](ht
 
 -   More on R [(then, scroll down to "R Learning Resources".) Includes video captures](https://library.duke.edu/data/guides)
 
-Outline
--------
+Workshop Outline
+----------------
 
 1.  Download the zipped repository ![Download ZIP button](images/clone.png "Download ZIP button")
 
@@ -67,10 +70,10 @@ Outline
 
     1.  `left_join` to merge data
 
-12. More Visualize with `ggplot2`
+12. Basic Visualization with `ggplot2`
 
     1.  Basic visualization (Scatter Plot, Box Plot, Histogram, Bar Chart)
-    2.  Take the ggplot2 workshop, or see the [materials](https://github.com/data-and-visualization/ggplot2-S18)
+    2.  Take the ggplot2 workshop, or see the [materials](https://github.com/amzoss/ggplot2-S19b)
     3.  Resource: <https://rfun.library.duke.edu/portfolio/ggplot_workshop/>
 
 13. Our Training Materials
