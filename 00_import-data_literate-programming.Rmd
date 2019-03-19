@@ -1,0 +1,80 @@
+---
+title: "my first notebook"
+author: "‽"
+date: "today's date"
+output: html_notebook
+---
+
+This is an [R Notebook](https://rmarkdown.rstudio.com/r_notebooks.html) illustrating [literate programming](https://en.wikipedia.org/wiki/Literate_programming) techniques with code **inside** *code chunks*.  Outside the code chunks is prose enhances with simple [R Markdown](http://rmarkdown.rstudio.com/)). 
+
+You can execute code within the R Notebook. Results appear beneath the code.  R Markdown documents can be rendered into many formats including MS Word, Power Point, slides, web pages, web sites, and more. 
+
+Try executing the code chunk, below, by clicking the green-arrow *Run* button (within the chunk), or by placing your cursor inside the chunk and pressing *Ctrl+Shift+Enter.*
+
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+*Ctrl+Shift+M*:  Generates a pipe -- ` %>% ` -- between functions (When you use the `tidyerse` package.)
+
+###### https://rmarkdown.rstudio.com/r_notebooks.html
+
+# Packages and the Tidyverse
+
+###### https://tidyverse.org
+
+```{r}
+library(tidyverse)
+```
+
+
+
+# Hello World
+
+This is my very first R Notebook.  
+
+My^[Your Name Here ;-j] *favorite **search** engines* are 
+
+1. [Google](http://google.com)
+3. [Yahoo](http://yahoo.com)
+2. [Bing](http://bing.com)
+
+###### https://rmarkdown.rstudio.com/
+
+# Load Data
+
+###### https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio
+###### https://www.rstudio.com/resources/webinars/importing-data-into-r/
+
+### Hurricane data from github
+
+```{r}
+canes <- read_csv("https://is.gd/bigstorms")
+```
+
+```{r}
+canes
+```
+
+have a look at the data structures and data types
+
+###### http://r4ds.had.co.nz/tibbles.html
+
+```{r}
+class(canes)
+```
+
+###### http://r4ds.had.co.nz/vectors.html
+
+```{r}
+glimpse(canes)
+```
+
+
