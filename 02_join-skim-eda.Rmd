@@ -105,7 +105,7 @@ favorability_popularity_rating %>% anti_join(starwars, by = "name")
 
 ### inner_join
 
-Alternatively to the `left_join` (which doesn't loose data), we could use the `inner_join` to retain only data when there is a match.  We could also use the results from the anti_join to edit the values in the matching key (`name`) and thereby force a more key matches.  
+Alternatively to the `left_join` (which doesn't loose data), we could use the `inner_join` to retain only data when there is a match.  We could also use the results from the anti_join to edit the values in the matching key (`name`) and thereby force more key matches.  
  
 ```{r}
 starwars %>% inner_join(favorability_popularity_rating, by = "name")
