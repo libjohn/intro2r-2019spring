@@ -1,0 +1,182 @@
+---
+title: "R, RStudio, and the Tidyverse"
+subtitle: "A Reproducible Data Savvy Toolkit"
+author: "Hosted by: Data & Visualization Services Department"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: 
+      - default
+      - default-fonts
+      - duke-blue
+      - hygge-duke
+      - libs/cc-fonts.css
+      - libs/figure-captions.css
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+class: middle
+
+- *Introduction to R* for **DataFest 2019**
+
+- Bathrooms
+
+- Instructors
+
+- Data & Visualization Services Department
+
+- We're going to start very slowly
+
+
+---
+
+## Oultine
+
+- RStudio IDE / Importing Data
+- Part 1: dplyr -- data transformations
+- Part 2: ETD/Join -- exploratory data transformations & skimr
+
+### As Time Allows
+
+See https://Rfun.library.duke.edu/
+
+- Part 3: **Brief** introduction to ggplot2
+- Part 4: Importing Large Files
+- Part 5: **Brief** GIS/Mapping
+
+---
+class: middle
+
+- https://is.gd/intro2r_2019spring
+
+- https://Rfun.library.duke.edu/intro2r
+
+- https://Rfun.Library.Duke.edu
+
+- https://Library.Duke.edu/data
+
+---
+class: middle, center, duke-softblue
+
+What is R
+
+---
+class: middle
+
+- A Statistical Programming Language developed in the early 90s
+
+    - Derived from S (mid 70s)
+    
+- RStudio - a free IDE:  make it easier to programming in R 
+
+- Tidyverse - An opinionated set of packages for data science
+
+    - Easiest to learn a consistent set of packages
+    - Good documentation:  https://www.tidyverse.org/
+
+---
+class: middle, center, duke-softblue
+
+Why Tidyverse
+
+---
+class:  middle
+
+# Tidy data
+
+- Structured data sets are **easier** to manipulate, model, and visualize
+
+- Rows are observations
+- Columns are variables
+
+
+---
+class: middle
+
+# R/RStudio/Tidyverse
+
+- A Reproducible Scripting Ecosystem
+
+    - Projects are local folder-directories and can be Git repositories
+    - RMarkdown enables literate coding
+    - RMarkdown enables reproducible reporting (Word, PowerPoint, and **much, much** more)
+    
+---
+class: middle
+
+# Literate Programing
+
+- Separate code from prose
+- R Notebooks (just one example)
+
+---
+class: middle
+
+# Let's Get Started
+
+- Rstudio IDE
+
+    - Console
+    - Import Files
+    - Script Editor
+    - Packages
+    - Help
+    
+- Tidyverse Package
+
+
+---
+
+# John Little
+
+&nbsp;
+
+.pull-left[.full-width[.content-box-green[
+### Data Science Librarian
+
+- [https://JohnLittle.info](https://johnlittle.info/)
+
+- https://github.com/libjohn
+]]
+
+### Rfun host...
+You can make **Rfun** with our resources for R and data science analytics.  See the [R we having fun yet‽](https://rfun.library.duke.edu/) resource pages.
+]
+
+.pull-right[.content-box-grey[
+### Duke University
+
+**Data & Visualization Services**
+
+- https://library.duke.edu/data/
+- askData@Duke.edu
+- The /Edge, Bostock (1st Floor)
+- [Past Workshops](https://library.duke.edu/data/news/past-workshops)
+- [Guides & Tutorials](https://library.duke.edu/data/tutorials)
+
+]]
+
+
+
+
+---
+class: center, middle
+## Shareable 
+
+Data, presentation, and handouts 
+
+<span class="cc">
+<!-- Key: a: SA, b: BY, c: CC Circle, d: ND, n: NC, m: Sampling, s: Share, r: Remix, C: CC Full Logo -->
+C bn
+</span>
+
+
+[CC BY-NC license](https://creativecommons.org/licenses/by-nc/4.0/)
+
+
