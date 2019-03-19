@@ -5,7 +5,7 @@ date: "today's date"
 output: html_notebook
 ---
 
-This is an [R Notebook](https://rmarkdown.rstudio.com/r_notebooks.html) illustrating [literate programming](https://en.wikipedia.org/wiki/Literate_programming) techniques with code **inside** *code chunks*.  Outside the code chunks is prose enhances with simple [R Markdown](http://rmarkdown.rstudio.com/)). 
+This is an [R Notebook](https://rmarkdown.rstudio.com/r_notebooks.html) illustrating [literate programming](https://en.wikipedia.org/wiki/Literate_programming) techniques with code **inside** *code chunks*.  Outside the code chunks you can write your prose to explain your goals, workflow, provenance, and code.  You can enhance your prose with [R Markdown](http://rmarkdown.rstudio.com/)). 
 
 You can execute code within the R Notebook. Results appear beneath the code.  R Markdown documents can be rendered into many formats including MS Word, Power Point, slides, web pages, web sites, and more. 
 
@@ -78,3 +78,6 @@ glimpse(canes)
 ```
 
 
+# More information
+
+https://rfun.library.duke.edu/
