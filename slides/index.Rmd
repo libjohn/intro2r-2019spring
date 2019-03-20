@@ -69,11 +69,11 @@ What is R
 ---
 class: middle
 
-- A Statistical Programming Language developed in the early 90s
+- A statistical programming language developed in the early 90s
 
-    - Derived from S (mid 70s)
+    - Derived from the S language (mid 70s)
     
-- RStudio - a free IDE:  make it easier to programming in R 
+- RStudio - a free IDE:  make it easier to program in R 
 
 - Tidyverse - An opinionated set of packages for data science
 
@@ -83,7 +83,7 @@ class: middle
 ---
 class: middle, center, duke-softblue
 
-Why Tidyverse
+# Why Tidyverse
 
 ---
 class:  middle
