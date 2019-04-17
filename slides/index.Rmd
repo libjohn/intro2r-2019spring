@@ -128,30 +128,32 @@ class: middle, center, duke-softblue
 # Common Questions
 
 ---
-class: middle
+class: middle, center
 
 # Assignment
 
 Create an object using a name
 
 ## `<-`
+Ctrl/Cmd-Shift-dash
 
 "gets value from"
 
-`answer <- 5 + 5`
+`answer <- 5 * 5`
 
 ---
-class: middle
+class: middle, center
 
 # Pipe
 
 Chain functions together (a tidyverse or magritter conjunction)
 
-## `%>%` 
+## `%>%`  
+Ctrl/Cmd-Shift-M
 
 "and then"
 
-`(5 * 5) %>% sqrt()`
+`answer %>% sqrt()`
 
 ---
 class: middle

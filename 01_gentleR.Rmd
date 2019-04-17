@@ -1,0 +1,102 @@
+---
+title: "dplyr"
+subtitle: "Data Transformations"
+author: "‽"
+date: "`r Sys.Date()`"
+output: html_notebook
+---
+
+First, load your library packages.  In this case, you want to load `tidyverse` which contains the `dplyr` packages along with several other helper packages.
+
+```{r}
+library(tidyverse)
+```
+
+
+# dplyr
+
+- filter  (rows)
+- arrange (sort rows by variables)
+- select (columns)
+- mutate (change cell values)
+- Count
+- Summarize
+
+###### http://r4ds.had.co.nz/transform.html#introduction-2
+###### http://dplyr.tidyverse.org/
+
+```{r}
+starwars
+```
+
+## Filter
+
+```{r}
+#starwars_small <- starwars %>% 
+#  filter(!is.na(mass), !is.na(height))
+starwars_small <- starwars %>% 
+  filter(mass >= 0)
+```
+
+## Arrange
+
+```{r}
+starwars_small %>% 
+  arrange(desc(height), desc(name))
+```
+
+## Select
+
+```{r}
+very_starwars_small <- starwars_small %>% 
+  arrange(species, height) %>% 
+  select(name, species, height, mass, birth_year)
+
+very_starwars_small
+```
+
+
+```{r}
+human_very_starwars_small <- very_starwars_small %>% 
+  filter(species == "Human")
+
+human_very_starwars_small
+```
+
+
+
+## Mutate
+
+```{r}
+bmi_human_very_starwars_small <- human_very_starwars_small %>%
+  mutate(BMI = round(height / mass, 2))
+
+bmi_human_very_starwars_small
+```
+
+
+## Count
+
+```{r}
+starwars %>% 
+  count(mass) %>% 
+  drop_na() %>% 
+  arrange(desc(n))
+```
+
+
+## Summarize
+
+```{r}
+starwars %>% 
+  filter(!is.na(height)) %>% 
+  group_by(species) %>% 
+  summarise(Count = n(), mean_ht = mean(height), min_ht = min(height),
+            max_ht = max(height), sum_ht = sum(height)) %>% 
+  arrange(desc(Count))
+```
+
+
+# More information
+
+https://rfun.library.duke.edu/intro2r
