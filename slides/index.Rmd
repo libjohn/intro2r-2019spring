@@ -38,7 +38,9 @@ class: middle
 
 ## URLs for Today
 
-- Cloud -- https://rstudio.cloud/spaces/13124/project/273816
+- Cloud -- https://is.gd/gentler
+
+- GitHub Repository - https://is.gd/intro2r_2019spring
 
 - Slide Deck -- https://rfun.library.duke.edu/intro2r/slides/
 

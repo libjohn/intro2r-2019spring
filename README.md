@@ -1,7 +1,7 @@
 Intro to R, 2019 Spring
 ================
 John Little & Joel Herndon
-2019-03-19
+2019-04-17
 
 <!-- Edit the README.Rmd.  Readme.md is auto genererated -->
 README
@@ -19,7 +19,9 @@ README
 
     -   <https://is.gd/intro2r_2019spring>
 
-    -   Rstudio.cloud: <https://is.gd/rdatafest>
+    -   Rstudio.cloud: <https://is.gd/gentler>
+
+    -   slides - <https://rfun.library.duke.edu/intro2r/slides>
 
 This repository contains supporting datasets and files for our [*Intro to R*](https://intro2r.library.duke.edu/) workshop by the [Data & Visualization Services Department](http://library.duke.edu/data), Duke University Libraries. You can find more information about our future and past [workshops](http://library.duke.edu/data/news)
 
