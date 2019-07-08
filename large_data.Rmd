@@ -28,6 +28,8 @@ Data Size | Library Package
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(data.table)
+library(fs)
+library(feather)
 ```
 
 
@@ -48,7 +50,10 @@ Loading larger datasets is much faster with data.table::`fread()`
 The [data.table package](https://github.com/Rdatatable/data.table/wiki) is useful for importing data larger than 1-2 GB.  It's often a good idea to convert the imported data frame to a tibble using code such as the following:  `my_tibble <- as_tibble(my_imported_data.table)`
 
 ```{r}
-download.file("https://people.duke.edu/~jrl/bigdata/2008.zip", "data/2008.zip")
+
+if(!file_exists("data/2008.csv")) {
+  download.file("https://people.duke.edu/~jrl/bigdata/2008.zip", "data/2008.zip")
+}
 
 unzip("data/2008.zip", exdir = "data")
 
@@ -58,6 +63,15 @@ flights <-
 flights2 <- as_tibble(flights)  # convert to Tibble
 ```
 
+Or, after the first import, write out as a [feather file](https://blog.rstudio.com/2016/03/29/feather/) and then import feather files.  This works best with solid state drives.
+
+```{r}
+write_feather(flights2, "data/flights.feather")
+
+flights_feather_df <- read_feather("data/flights.feather")
+```
+
+
 
 ### Compare import times 
 
@@ -66,9 +80,9 @@ using the `system.time()` function we can compare the processing and elapsed tim
 
 | Function | user | system | elapsed |
 | ---------|-----:|-------:|--------:|
-readr::`read_csv("data/2008.csv")` | 94.01 | 84.73 | 181.98 
 data.table::`fread("data/2008.csv")` | 6.78 | 0.69 | 2.72 
-
+feather::`read_feather("data/flights.feather)` | 1.41 | 1.90 | 11.42
+readr::`read_csv("data/2008.csv")` | 94.01 | 84.73 | 181.98 
 
 ## Preserve data table as a binary matrix
 
