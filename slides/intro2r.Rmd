@@ -74,6 +74,15 @@ Extends R into your domain of interest.  Choose from  thousands of R packages.
 
 ---
 class: middle
+# Installation Help
+
+- Primers Help: Brief, video based instruction
+- LinkedIn Learning (via Duke)
+- Come see me during my walk-in hours
+- Already installed in our Lab, RStudio.Cloud, Duke Containers
+
+---
+class: middle
 # Why RStudio
 
 - Integrated **Development Environment** (IDE)
