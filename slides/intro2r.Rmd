@@ -159,16 +159,7 @@ class: duke-orange
 - Part 5: Importing Large Files
     
 ---
-# Literate Coding
-
-- Implemented via [R Notebooks](https://bookdown.org/yihui/rmarkdown/notebook.html) (for exmple)
-
-    - header
-    - prose
-    - code
-
-
----
+class: duke-softblue
 ## Import data into a Project
 
 An [RStuido project](https://r4ds.had.co.nz/workflow-projects.html#rstudio-projects) is a folder directory and can be a version control repository
@@ -180,10 +171,46 @@ An [RStuido project](https://r4ds.had.co.nz/workflow-projects.html#rstudio-proje
 - Version Control: A git repository
 
 
-**00_import-data_literate-programming.Rmd**
-    
+---
+# Literate Coding
+
+Implemented via [R Notebooks](https://bookdown.org/yihui/rmarkdown/notebook.html), an example of an [R Markdown](https://bookdown.org/yihui/rmarkdown/) document, edited within the RStudio IDE.
+
+.pull-left[
+```{r console image, echo=FALSE}
+knitr::include_graphics('https://d33wubrfki0l68.cloudfront.net/9a23d664f0f49bc2ef8e78bed6277dd48bd2b96d/af132/diagrams/rstudio-console.png')
+```
+.tiny[.right[Image Credit: [R for Data Science](https://r4ds.had.co.nz/introduction.html#rstudio)]]
+
+.pull-left[
+**RStudio Console**
+
+- Console
+]
+.pull-right[
+- Import Files
+- Script Editor
+- Packages
+- Help
+]]
+.pull-right[
+```{r rmarkdown image, echo=FALSE}
+knitr::include_graphics('https://bookdown.org/yihui/rmarkdown/images/notebook-preview.png')
+```
+.tiny[.right[Image Credit: [R Markdown: The Definitive Guide.](https://bookdown.org/yihui/rmarkdown/notebook.html#using-notebooks)]]
+
+**R Notebook**
+- YAML header
+- prose
+- code chunks
+
+]
+
+]
+
 
 ---
+class: duke-softblue
 # dplyr
 
 A grammar of data manipulation
@@ -191,17 +218,90 @@ A grammar of data manipulation
 - consistent verbs to solve common data transforms
 - https://dplyr.tidyverse.org/
 
-
-## Our Goal
+---
+## Five dplyr Verbs
 
 Function | Usage
 :--- | :---
-`filter` | rows
+`filter` | subset rows by variables
 `arrange` | sort rows by variables
-`select` | columns
+`select` | columns (variables)
 `mutate` | change cell values
 `count` |   
 `summarize` |
+
+---
+class: middle, center, duke-green
+
+# Sidebar: Common Questions
+
+---
+class: middle, center
+
+# Assignment
+
+Create an object using a name
+
+## `<-`
+alt-dash
+
+"gets value from"
+
+`answer <- 5 * 5`
+
+---
+class: middle, center
+
+# Pipe
+
+Chain functions together (a tidyverse or magritter conjunction)
+
+## `%>%`  
+Ctrl/Cmd-Shift-M
+
+"and then"
+
+`answer %>% sqrt()`
+
+---
+class: duke-softblue
+# `filter`
+
+Subset **Rows** by variables
+
+`filter(starwars, eye_color == "orange")`
+
+```{r filter, echo=FALSE}
+knitr::include_graphics('../images/filter_by_rows.svg')
+```
+
+---
+class: duke-softblue
+# `sort` 
+
+arrange **Rows** by variables
+
+`arrange(starwars, eye_color)`  
+`arrange(starwars, desc(eye_color))`
+
+`arrange(starwars, desc(eye_color), hair_color)`
+
+```{r arrange, echo=FALSE}
+knitr::include_graphics('../images/arrange_rows.svg')
+```
+
+---
+class: duke-softblue
+# `select`
+
+subset by columbs (variables)
+
+`select(starwars, hair_color, eye_color)`
+`select(starwars, 2:4)`
+`select(starwars, name:mass, 10, 7, 4:6)`
+
+
+
 
 ---
 # Learning Resources
@@ -233,7 +333,7 @@ Function | Usage
 .pull-left[.full-width[.content-box-green[
 ### Data Science Librarian
 
-- https://johnlittle.info/
+- https://JohnLittle.info/
 
 - https://github.com/libjohn
 ]]
