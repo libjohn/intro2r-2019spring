@@ -276,10 +276,13 @@ class: duke-softblue
 
 arrange **Rows** by variables
 
+```
 `arrange(starwars, eye_color)`  
+
 `arrange(starwars, desc(eye_color))`
 
 `arrange(starwars, desc(eye_color), hair_color)`
+```
 
 ![](../images/arrange_rows.svg)&lt;!-- --&gt;
 
@@ -289,11 +292,31 @@ class: duke-softblue
 
 subset by columbs (variables)
 
-`select(starwars, hair_color, eye_color)`
-`select(starwars, 2:4)`
-`select(starwars, name:mass, 10, 7, 4:6)`
+```
+select(starwars, hair_color, eye_color)
 
+select(starwars, 2:4)
 
+select(starwars, name:mass, 10, 7, 4:6)
+```
+
+![](../images/select.svg)&lt;!-- --&gt;
+
+---
+class: duke-softblue
+# `mutate` 
+
+Change cell values
+
+```
+mutate(starwars, big_mass = mass * 100)
+mutate(starwars, BMI = (mass / (height/100)^2))
+
+mutate(starwars, 
+       nickname = str_c("Big", str_to_upper(hair_color), 
+                        sep = " "))
+```
+![](../images/mutate.svg)&lt;!-- --&gt;
 
 
 ---
