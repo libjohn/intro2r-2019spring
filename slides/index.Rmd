@@ -63,11 +63,11 @@ class:  middle
 .pull-left[
 - Why R ; Why RStudio
 
-- Basic Rstudio navigation
+- Basic RStudio navigation
 
 - Import Data
 
-- Tansform Data]
+- Transform Data]
 
 .pull-right[
 ```{r echo=FALSE, fig.width=8, message=FALSE, warning=FALSE}
