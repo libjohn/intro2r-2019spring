@@ -171,7 +171,7 @@ An opinionated set of packages for data science
 .pull-left[.content-box-neutral[
 
 ```{r echo=FALSE, fig.cap="Base R v Tidyverse"}
-knitr::include_graphics('../images/expanding-brain_tidyverse.jpg')
+knitr::include_graphics('images/expanding-brain_tidyverse.jpg')
 ```
 
 ]]
@@ -323,7 +323,7 @@ Subset **Rows** by variables
 `starwars %>% filter(eye_color == "orange")`
 
 ```{r filter, echo=FALSE}
-knitr::include_graphics('../images/filter_by_rows.svg')
+knitr::include_graphics('images/filter_by_rows.svg')
 ```
 
 ---
@@ -341,7 +341,7 @@ starwars %>% arrange(desc(eye_color), hair_color)
 ```
 
 ```{r arrange, echo=FALSE}
-knitr::include_graphics('../images/arrange_rows.svg')
+knitr::include_graphics('images/arrange_rows.svg')
 ```
 
 ---
@@ -359,7 +359,7 @@ starwars %>% select(name:mass, 10, 7, 4:6)
 ```
 
 ```{r select, echo=FALSE}
-knitr::include_graphics('../images/select.svg')
+knitr::include_graphics('images/select.svg')
 ```
 
 ---
@@ -377,7 +377,7 @@ starwars %>% mutate(
                         sep = " "))
 ```
 ```{r mutate, echo=FALSE}
-knitr::include_graphics('../images/mutate.svg')
+knitr::include_graphics('images/mutate.svg')
 ```
 
 ---
