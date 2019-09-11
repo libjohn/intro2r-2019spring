@@ -45,6 +45,7 @@ options(htmltools.dir.version = FALSE)
     - Our/Your Computer Lab
 
 ---
+class: middle
 ## URLs for Today
 
 - Slide Deck -- https://rfun.library.duke.edu/intro2r/slides/
@@ -54,6 +55,51 @@ options(htmltools.dir.version = FALSE)
 - Intro to R: Online Guide -- https://rfun.library.duke.edu/intro2r
 
 - Cloud -- https://is.gd/gentler
+
+---
+class:  middle
+## Goals for Today
+
+.pull-left[
+- Why R ; Why RStudio
+
+- Basic Rstudio navigation
+
+- Import Data
+
+- Tansform Data]
+
+.pull-right[
+```{r echo=FALSE, fig.width=8, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(ggpubr)
+plot1 <- ggplot(data = fct_count(starwars$eye_color, sort = T) %>% head(6), aes(x = f, y = n)) +
+  geom_col() +
+  coord_flip() +
+  xlab(NULL) +
+  ylab("count")
+
+plot2 <- ggplot(data = starwars, ) +
+  geom_bar(aes(x = fct_rev(fct_lump(fct_infreq(eye_color), n = 5)))) +
+  geom_bar(data = starwars %>% filter(eye_color == "orange"), aes(eye_color), fill = "orange") +
+  annotate("text", label = "Rare Color", x = 2, y = 4.2) +
+  coord_flip() +
+  labs(title = "Eye color of Star Wars Characters",
+       x = "", y = "",
+       caption = "data source: dplyr::starwars") +
+  theme_bw()
+  
+
+plot3 <- ggplot(data = starwars, aes(x = fct_lump(fct_infreq(eye_color), n = 5))) +
+  geom_bar(aes(fill = gender)) +
+  xlab(NULL)
+
+ggarrange(ggarrange(plot1, plot2, ncol = 2), 
+          plot3, nrow =2)
+
+
+```
+]
 
 ---
 class: duke-softblue, middle
@@ -96,10 +142,10 @@ class: middle
 - Free Integrated **Development Environment** (IDE)
 - Supports Publishing through RStudio hosting
 
-    - [RPubs](https://rpubs.com/) | [Getting Started](https://rpubs.com/about/getting-started)
-    - RStudio Connect (teams)
+    - [RPubs](https://rpubs.com/) (free) | [Getting Started](https://rpubs.com/about/getting-started)
+    - RStudio Connect (teams | $$)
 
-    - Or host your reports other places
+    - Or host your reports other places (free)
     
         - Duke has many hosting options
         - **Netlify.com**
@@ -168,15 +214,15 @@ An [RStuido project](https://r4ds.had.co.nz/workflow-projects.html#rstudio-proje
 
 - Paths are relative to the project
 
-- Version Control: A git repository
+- Optional Version Control. e.g. git repository
+
+- Reproducibility
 
 
 ---
-# Literate Coding
+### Literate Coding
 
-Implemented via [R Notebooks](https://bookdown.org/yihui/rmarkdown/notebook.html), an example of an [R Markdown](https://bookdown.org/yihui/rmarkdown/) document, edited within the RStudio IDE.
-
-.pull-left[
+.pull-left[.content-box-grey[
 ```{r console image, echo=FALSE}
 knitr::include_graphics('https://d33wubrfki0l68.cloudfront.net/9a23d664f0f49bc2ef8e78bed6277dd48bd2b96d/af132/diagrams/rstudio-console.png')
 ```
@@ -192,21 +238,22 @@ knitr::include_graphics('https://d33wubrfki0l68.cloudfront.net/9a23d664f0f49bc2e
 - Script Editor
 - Packages
 - Help
-]]
-.pull-right[
+]]]
+.pull-right[.content-box-yellow[
 ```{r rmarkdown image, echo=FALSE}
 knitr::include_graphics('https://bookdown.org/yihui/rmarkdown/images/notebook-preview.png')
 ```
 .tiny[.right[Image Credit: [R Markdown: The Definitive Guide.](https://bookdown.org/yihui/rmarkdown/notebook.html#using-notebooks)]]
 
 **R Notebook**
+
 - YAML header
 - prose
 - code chunks
+]]
 
-]
+.tiny[Implemented within the RStudio IDE: An [R Notebook](https://bookdown.org/yihui/rmarkdown/notebook.html) example of an [R Markdown](https://bookdown.org/yihui/rmarkdown/) document.]
 
-]
 
 
 ---
@@ -216,10 +263,12 @@ class: duke-softblue
 A grammar of data manipulation
 
 - consistent verbs to solve common data transforms
+
 - https://dplyr.tidyverse.org/
 
 ---
-## Five dplyr Verbs
+class: center
+## Learn Five dplyr Verbs
 
 Function | Usage
 :--- | :---
@@ -228,7 +277,10 @@ Function | Usage
 `select` | columns (variables)
 `mutate` | change cell values
 `count` |   
-`summarize` |
+.purple[`summarize`] |
+
+
+There are many [more dplyr functions](https://dplyr.tidyverse.org/reference/) 
 
 ---
 class: middle, center, duke-green
@@ -269,7 +321,7 @@ class: duke-softblue
 
 Subset **Rows** by variables
 
-`filter(starwars, eye_color == "orange")`
+`starwars %>% filter(eye_color == "orange")`
 
 ```{r filter, echo=FALSE}
 knitr::include_graphics('../images/filter_by_rows.svg')
@@ -277,16 +329,16 @@ knitr::include_graphics('../images/filter_by_rows.svg')
 
 ---
 class: duke-softblue
-# `sort` 
+# `arrange` 
 
-arrange **Rows** by variables
+Sort **Rows** by variables
 
 ```
-`arrange(starwars, eye_color)`  
+starwars %>% arrange(eye_color)
 
-`arrange(starwars, desc(eye_color))`
+starwars %>% arrange(desc(eye_color))
 
-`arrange(starwars, desc(eye_color), hair_color)`
+starwars %>% arrange(desc(eye_color), hair_color)
 ```
 
 ```{r arrange, echo=FALSE}
@@ -297,14 +349,14 @@ knitr::include_graphics('../images/arrange_rows.svg')
 class: duke-softblue
 # `select`
 
-subset by columbs (variables)
+subset by columns (variables)
 
 ```
-select(starwars, hair_color, eye_color)
+starwars %>% select(hair_color, eye_color)
 
-select(starwars, 2:4)
+starwars %>% select(2:4)
 
-select(starwars, name:mass, 10, 7, 4:6)
+starwars %>% select(name:mass, 10, 7, 4:6)
 ```
 
 ```{r select, echo=FALSE}
@@ -318,16 +370,45 @@ class: duke-softblue
 Change cell values
 
 ```
-mutate(starwars, big_mass = mass * 100)
-mutate(starwars, BMI = (mass / (height/100)^2))
+starwars %>% mutate(big_mass = mass * 100)
+starwars %>% mutate(BMI = (mass / (height/100)^2))
 
-mutate(starwars, 
+starwars %>% mutate(
        nickname = str_c("Big", str_to_upper(hair_color), 
                         sep = " "))
 ```
 ```{r mutate, echo=FALSE}
 knitr::include_graphics('../images/mutate.svg')
 ```
+
+---
+class: duke-softblue
+## `count`
+
+Count observations by group
+
+```r
+starwars %>% count(gender)
+```
+
+## `summarize`
+
+Reduce multiple values down to a single line
+
+```r
+starwars %>% 
+  drop_na(height) %>% 
+  summarise(n(), n_distinct(height), 
+            min(height), max(height))
+
+starwars %>% 
+  drop_na(height) %>% 
+  group_by(gender) %>% 
+  summarise(Total = n(), n_distinct(height), 
+            min(height), max(height)) %>% 
+  ungroup()
+```
+
 
 
 ---
