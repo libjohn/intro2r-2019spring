@@ -21,7 +21,7 @@ README
 - Surveys
 
     - [Pre-survey](https://docs.google.com/forms/d/e/1FAIpQLSdtAb8OFb8ii2_5o6z0a_m8P-Owa0Bh4N4ouhLUZ3RJ7KbAiA/viewform)
-    - [Questions](https://docs.google.com/document/d/162S6yinlPCo3azRhvaSJckj_8c2g7Bf-_B5wZ-xIHqI/edit?usp=sharing) 
+    - [Questions during workshop](https://docs.google.com/document/d/162S6yinlPCo3azRhvaSJckj_8c2g7Bf-_B5wZ-xIHqI/edit?usp=sharing) 
     - [Post-Survey](https://docs.google.com/forms/d/e/1FAIpQLSdczFPtCOfQxXTF14gje2NN3B5y0IR1SutLQe_oeQawHE5k5A/viewform)
 
 
