@@ -19,6 +19,7 @@ John Little & Joel Herndon
     
       - [Pre-survey](https://forms.gle/BpqwQLwArSddVerz5)
       - Questions during workshop: Use Zoom Chat
+      - [Recording](https://youtu.be/NtfHcNlwSEY)
       - [Post-Survey](https://forms.gle/xKTVmtijMJYVAFxB9)
 
 ## License
